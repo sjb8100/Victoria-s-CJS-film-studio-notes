@@ -3,6 +3,10 @@
   "version": "1.0.0",
   "description": "Echad Ritual Phase 1: Charts and Common Ground - SSS Shadow DOM Portal",
   "main": "index.html",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/sjb8100/Victoria-s-CJS-film-studio-notes.git"
+  },
   "scripts": {
     "build": "mkdir -p public && cp *.html public/ 2>/dev/null || true && cp *.js public/ 2>/dev/null || true && cp *.css public/ 2>/dev/null || true && cp *.json public/ 2>/dev/null || true",
     "start": "npx serve public"
@@ -12,8 +16,14 @@
     "ritual",
     "dNFT",
     "unruh",
-    "shadow-dom"
+    "shadow-dom",
+    "github-mirror"
   ],
   "author": "Victoria / sjb8100",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/sjb8100/Victoria-s-CJS-film-studio-notes/issues"
+  },
+  "homepage": "https://github.com/sjb8100/Victoria-s-CJS-film-studio-notes#readme",
   "dependencies": {}
 }
