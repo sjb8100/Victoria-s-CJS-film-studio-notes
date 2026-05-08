@@ -8,7 +8,7 @@
     "url": "git+https://github.com/sjb8100/Victoria-s-CJS-film-studio-notes.git"
   },
   "scripts": {
-    "build": "mkdir -p public && cp *.html public/ 2>/dev/null || true && cp *.js public/ 2>/dev/null || true && cp *.css public/ 2>/dev/null || true && cp *.json public/ 2>/dev/null || true",
+    "build": "mkdir -p public && cp *.html public/ 2>/dev/null || true && cp *.js public/ 2>/dev/null || true && cp *.css public/ 2>/dev/null || true && cp *.json public/ 2>/dev/null || true && cp package-lock.json public/ 2>/dev/null || true",
     "start": "npx serve public"
   },
   "keywords": [
