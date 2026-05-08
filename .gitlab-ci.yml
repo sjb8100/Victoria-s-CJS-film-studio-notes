@@ -1,13 +1,24 @@
 # The Docker image that will be used to build your app
-image: "node: lts"
-create-pages:
-  pages:
-    # The folder that contains the files to be exposed at the Page URL
-    publish: public
-  rules:
-    # This ensures that only pushes to the default branch will trigger
-    # a pages deploy
-    - if: $CI_COMMIT_REF_NAME == $CI_DEFAULT_BRANCH
+image: 'node:lts'
+
+# The job MUST be named exactly "pages" for GitLab Pages to deploy properly
+pages:
   # Functions that should be executed before the build script is run
   before_script:
     - npm ci
+
+  # The required script block containing your build commands
+  script:
+    - npm run build # <-- Replace this with your actual build command
+    # Note: GitLab Pages expects the final static files to be in a folder named "public".
+    # If your framework builds to a folder like "dist" or "build", rename it here like so:
+    # - mv dist public
+
+  # This tells GitLab which folder to grab and deploy to the Pages URL
+  artifacts:
+    paths:
+      - public
+
+  rules:
+    # This ensures that only pushes to the default branch will trigger a pages deploy
+    - if: "$CI_COMMIT_REF_NAME == $CI_DEFAULT_BRANCH"
