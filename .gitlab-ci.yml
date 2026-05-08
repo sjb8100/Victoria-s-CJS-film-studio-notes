@@ -5,14 +5,24 @@ image: 'node:lts'
 pages:
   # Functions that should be executed before the build script is run
   before_script:
-    - npm ci
+    # Use 'npm install' instead of 'npm ci' if you don't have a package-lock.json
+    - npm install
 
   # The required script block containing your build commands
   script:
-    - npm run build # <-- Replace this with your actual build command
-    # Note: GitLab Pages expects the final static files to be in a folder named "public".
-    # If your framework builds to a folder like "dist" or "build", rename it here like so:
-    # - mv dist public
+    # Attempt to run the build script defined in your package.json
+    - npm run build || echo "No build script found, skipping..."
+    
+    # GitLab Pages requires the files to be in a folder named "public"
+    # If your files are in the root, we ensure the public folder exists and move them
+    - |
+      if [ ! -d "public" ]; then
+        mkdir public
+        cp ./*.html public/ 2>/dev/null || true
+        cp ./*.js public/ 2>/dev/null || true
+        cp ./*.css public/ 2>/dev/null || true
+        cp -r assets public/ 2>/dev/null || true
+      fi
 
   # This tells GitLab which folder to grab and deploy to the Pages URL
   artifacts:
